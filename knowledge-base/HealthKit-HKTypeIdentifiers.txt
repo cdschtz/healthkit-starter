@@ -1,0 +1,576 @@
+
+//
+//  HKTypeIdentifiers
+//  HealthKit
+//
+//  Copyright (c) 2014 Apple Inc. All rights reserved.
+//
+
+/*--------------------------------*/
+/*   HKQuantityType Identifiers   */
+/*--------------------------------*/
+
+public struct HKQuantityTypeIdentifier : Hashable, Equatable, RawRepresentable {
+
+    public init(rawValue: String)
+}
+extension HKQuantityTypeIdentifier {
+
+    
+    @available(iOS 8.0, *)
+    public static let bodyMassIndex: HKQuantityTypeIdentifier
+
+    @available(iOS 8.0, *)
+    public static let bodyFatPercentage: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 8.0, *)
+    public static let height: HKQuantityTypeIdentifier // Length,                      Discrete
+
+    @available(iOS 8.0, *)
+    public static let bodyMass: HKQuantityTypeIdentifier // Mass,                        Discrete
+
+    @available(iOS 8.0, *)
+    public static let leanBodyMass: HKQuantityTypeIdentifier // Mass,                        Discrete
+
+    @available(iOS 11.0, *)
+    public static let waistCircumference: HKQuantityTypeIdentifier // Length,                      Discrete
+
+    
+    // Fitness
+    @available(iOS 8.0, *)
+    public static let stepCount: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 8.0, *)
+    public static let distanceWalkingRunning: HKQuantityTypeIdentifier // Length,                      Cumulative
+
+    @available(iOS 8.0, *)
+    public static let distanceCycling: HKQuantityTypeIdentifier // Length,                      Cumulative
+
+    @available(iOS 10.0, *)
+    public static let distanceWheelchair: HKQuantityTypeIdentifier // Length,                      Cumulative
+
+    @available(iOS 8.0, *)
+    public static let basalEnergyBurned: HKQuantityTypeIdentifier // Energy,                      Cumulative
+
+    @available(iOS 8.0, *)
+    public static let activeEnergyBurned: HKQuantityTypeIdentifier // Energy,                      Cumulative
+
+    @available(iOS 8.0, *)
+    public static let flightsClimbed: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 8.0, *)
+    public static let nikeFuel: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 9.3, *)
+    public static let appleExerciseTime: HKQuantityTypeIdentifier // Time                         Cumulative
+
+    @available(iOS 10.0, *)
+    public static let pushCount: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 10.0, *)
+    public static let distanceSwimming: HKQuantityTypeIdentifier // Length,                      Cumulative
+
+    @available(iOS 10.0, *)
+    public static let swimmingStrokeCount: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 11.0, *)
+    public static let vo2Max: HKQuantityTypeIdentifier // ml/(kg*min)                  Discrete
+
+    @available(iOS 11.2, *)
+    public static let distanceDownhillSnowSports: HKQuantityTypeIdentifier // Length,                      Cumulative
+
+    @available(iOS 13.0, *)
+    public static let appleStandTime: HKQuantityTypeIdentifier // Time,                        Cumulative
+
+    @available(iOS 14.0, *)
+    public static let walkingSpeed: HKQuantityTypeIdentifier // m/s,                         Discrete
+
+    @available(iOS 14.0, *)
+    public static let walkingDoubleSupportPercentage: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 14.0, *)
+    public static let walkingAsymmetryPercentage: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 14.0, *)
+    public static let walkingStepLength: HKQuantityTypeIdentifier // Length,                      Discrete
+
+    @available(iOS 14.0, *)
+    public static let sixMinuteWalkTestDistance: HKQuantityTypeIdentifier // Length,                      Discrete
+
+    @available(iOS 14.0, *)
+    public static let stairAscentSpeed: HKQuantityTypeIdentifier // m/s,                         Discrete
+
+    @available(iOS 14.0, *)
+    public static let stairDescentSpeed: HKQuantityTypeIdentifier // m/s),                        Discrete
+
+    @available(iOS 14.5, *)
+    public static let appleMoveTime: HKQuantityTypeIdentifier // Time,                        Cumulative
+
+    
+    // Vitals
+    @available(iOS 8.0, *)
+    public static let heartRate: HKQuantityTypeIdentifier // Scalar(Count)/Time,          Discrete
+
+    @available(iOS 8.0, *)
+    public static let bodyTemperature: HKQuantityTypeIdentifier // Temperature,                 Discrete
+
+    @available(iOS 9.0, *)
+    public static let basalBodyTemperature: HKQuantityTypeIdentifier // Basal Body Temperature,      Discrete
+
+    @available(iOS 8.0, *)
+    public static let bloodPressureSystolic: HKQuantityTypeIdentifier // Pressure,                    Discrete
+
+    @available(iOS 8.0, *)
+    public static let bloodPressureDiastolic: HKQuantityTypeIdentifier // Pressure,                    Discrete
+
+    @available(iOS 8.0, *)
+    public static let respiratoryRate: HKQuantityTypeIdentifier // Scalar(Count)/Time,          Discrete
+
+    // Beats per minute estimate of a user's lowest heart rate while at rest
+    @available(iOS 11.0, *)
+    public static let restingHeartRate: HKQuantityTypeIdentifier // Scalar(Count)/Time,          Discrete
+
+    // Average heartbeats per minute captured by an Apple Watch while a user is walking
+    @available(iOS 11.0, *)
+    public static let walkingHeartRateAverage: HKQuantityTypeIdentifier // Scalar(Count)/Time,          Discrete
+
+    // The standard deviation of heart beat-to-beat intevals (Standard Deviation of Normal to Normal)
+    @available(iOS 11.0, *)
+    public static let heartRateVariabilitySDNN: HKQuantityTypeIdentifier // Time (ms),                   Discrete
+
+    
+    // Results
+    @available(iOS 8.0, *)
+    public static let oxygenSaturation: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 8.0, *)
+    public static let peripheralPerfusionIndex: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 8.0, *)
+    public static let bloodGlucose: HKQuantityTypeIdentifier // Mass/Volume,                 Discrete
+
+    @available(iOS 8.0, *)
+    public static let numberOfTimesFallen: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 8.0, *)
+    public static let electrodermalActivity: HKQuantityTypeIdentifier // Conductance,                 Discrete
+
+    @available(iOS 8.0, *)
+    public static let inhalerUsage: HKQuantityTypeIdentifier // Scalar(Count),               Cumulative
+
+    @available(iOS 11.0, *)
+    public static let insulinDelivery: HKQuantityTypeIdentifier // Pharmacology (IU)            Cumulative
+
+    @available(iOS 8.0, *)
+    public static let bloodAlcoholContent: HKQuantityTypeIdentifier // Scalar(Percent, 0.0 - 1.0),  Discrete
+
+    @available(iOS 8.0, *)
+    public static let forcedVitalCapacity: HKQuantityTypeIdentifier // Volume,                      Discrete
+
+    @available(iOS 8.0, *)
+    public static let forcedExpiratoryVolume1: HKQuantityTypeIdentifier // Volume,                      Discrete
+
+    @available(iOS 8.0, *)
+    public static let peakExpiratoryFlowRate: HKQuantityTypeIdentifier // Volume/Time,                 Discrete
+
+    @available(iOS 13.0, *)
+    public static let environmentalAudioExposure: HKQuantityTypeIdentifier // Pressure,                    DiscreteEquivalentContinuousLevel
+
+    @available(iOS 13.0, *)
+    public static let headphoneAudioExposure: HKQuantityTypeIdentifier // Pressure,                    DiscreteEquivalentContinuousLevel
+
+    
+    // Nutrition
+    @available(iOS 8.0, *)
+    public static let dietaryFatTotal: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryFatPolyunsaturated: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryFatMonounsaturated: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryFatSaturated: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryCholesterol: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietarySodium: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryCarbohydrates: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryFiber: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietarySugar: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryEnergyConsumed: HKQuantityTypeIdentifier // Energy, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryProtein: HKQuantityTypeIdentifier // Mass,   Cumulative
+
+    
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminA: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminB6: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminB12: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminC: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminD: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminE: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryVitaminK: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryCalcium: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryIron: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryThiamin: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryRiboflavin: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryNiacin: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryFolate: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryBiotin: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryPantothenicAcid: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryPhosphorus: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryIodine: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryMagnesium: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryZinc: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietarySelenium: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryCopper: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryManganese: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryChromium: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryMolybdenum: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryChloride: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryPotassium: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 8.0, *)
+    public static let dietaryCaffeine: HKQuantityTypeIdentifier // Mass, Cumulative
+
+    @available(iOS 9.0, *)
+    public static let dietaryWater: HKQuantityTypeIdentifier // Volume, Cumulative
+
+    
+    @available(iOS 9.0, *)
+    public static let uvExposure: HKQuantityTypeIdentifier // Scalar(Count), Discrete
+}
+
+/*--------------------------------*/
+/*   HKCategoryType Identifiers   */
+/*--------------------------------*/
+
+public struct HKCategoryTypeIdentifier : Hashable, Equatable, RawRepresentable {
+
+    public init(rawValue: String)
+}
+extension HKCategoryTypeIdentifier {
+
+    
+    @available(iOS 8.0, *)
+    public static let sleepAnalysis: HKCategoryTypeIdentifier
+
+    @available(iOS 9.0, *)
+    public static let appleStandHour: HKCategoryTypeIdentifier // HKCategoryValueAppleStandHour
+
+    @available(iOS 9.0, *)
+    public static let cervicalMucusQuality: HKCategoryTypeIdentifier // HKCategoryValueCervicalMucusQuality
+
+    @available(iOS 9.0, *)
+    public static let ovulationTestResult: HKCategoryTypeIdentifier // HKCategoryValueOvulationTestResult
+
+    @available(iOS 9.0, *)
+    public static let menstrualFlow: HKCategoryTypeIdentifier // HKCategoryValueMenstrualFlow
+
+    @available(iOS 9.0, *)
+    public static let intermenstrualBleeding: HKCategoryTypeIdentifier // (Spotting) HKCategoryValue
+
+    @available(iOS 9.0, *)
+    public static let sexualActivity: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 10.0, *)
+    public static let mindfulSession: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 12.2, *)
+    public static let highHeartRateEvent: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 12.2, *)
+    public static let lowHeartRateEvent: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 12.2, *)
+    public static let irregularHeartRhythmEvent: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS, introduced: 13.0, deprecated: 14.0, renamed: "HKCategoryTypeIdentifier.environmentalAudioExposureEvent")
+    public static let audioExposureEvent: HKCategoryTypeIdentifier // HKCategoryValueAudioExposureEvent
+
+    
+    @available(iOS 13.0, *)
+    public static let toothbrushingEvent: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 14.3, *)
+    public static let pregnancy: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 14.3, *)
+    public static let lactation: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 14.3, *)
+    public static let contraceptive: HKCategoryTypeIdentifier // HKCategoryValueContraceptive
+
+    @available(iOS 14.0, *)
+    public static let environmentalAudioExposureEvent: HKCategoryTypeIdentifier // HKCategoryValueEnvironmentalAudioExposureEvent
+
+    @available(iOS 14.2, *)
+    public static let headphoneAudioExposureEvent: HKCategoryTypeIdentifier // HKCategoryValueHeadphoneAudioExposureEvent
+
+    @available(iOS 14.0, *)
+    public static let handwashingEvent: HKCategoryTypeIdentifier // HKCategoryValue
+
+    @available(iOS 14.3, *)
+    public static let lowCardioFitnessEvent: HKCategoryTypeIdentifier
+
+    
+    // Symptoms
+    @available(iOS 13.6, *)
+    public static let abdominalCramps: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let acne: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let appetiteChanges: HKCategoryTypeIdentifier // HKCategoryValueAppetiteChanges
+
+    @available(iOS 14.0, *)
+    public static let bladderIncontinence: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let bloating: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let breastPain: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let chestTightnessOrPain: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let chills: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let constipation: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let coughing: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let diarrhea: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let dizziness: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 14.0, *)
+    public static let drySkin: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let fainting: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let fatigue: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let fever: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let generalizedBodyAche: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 14.0, *)
+    public static let hairLoss: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let headache: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let heartburn: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let hotFlashes: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let lossOfSmell: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let lossOfTaste: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let lowerBackPain: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 14.0, *)
+    public static let memoryLapse: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let moodChanges: HKCategoryTypeIdentifier // HKCategoryValuePresence
+
+    @available(iOS 13.6, *)
+    public static let nausea: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 14.0, *)
+    public static let nightSweats: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let pelvicPain: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let rapidPoundingOrFlutteringHeartbeat: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let runnyNose: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let shortnessOfBreath: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let sinusCongestion: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let skippedHeartbeat: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let sleepChanges: HKCategoryTypeIdentifier // HKCategoryValuePresence
+
+    @available(iOS 13.6, *)
+    public static let soreThroat: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 14.0, *)
+    public static let vaginalDryness: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let vomiting: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+
+    @available(iOS 13.6, *)
+    public static let wheezing: HKCategoryTypeIdentifier // HKCategoryValueSeverity
+}
+
+/*--------------------------------------*/
+/*   HKCharacteristicType Identifiers   */
+/*--------------------------------------*/
+
+public struct HKCharacteristicTypeIdentifier : Hashable, Equatable, RawRepresentable {
+
+    public init(rawValue: String)
+}
+extension HKCharacteristicTypeIdentifier {
+
+    
+    @available(iOS 8.0, *)
+    public static let biologicalSex: HKCharacteristicTypeIdentifier
+
+    @available(iOS 8.0, *)
+    public static let bloodType: HKCharacteristicTypeIdentifier // HKBloodTypeObject
+
+    @available(iOS 8.0, *)
+    public static let dateOfBirth: HKCharacteristicTypeIdentifier // NSDateComponents
+
+    @available(iOS 9.0, *)
+    public static let fitzpatrickSkinType: HKCharacteristicTypeIdentifier // HKFitzpatrickSkinTypeObject
+
+    @available(iOS 10.0, *)
+    public static let wheelchairUse: HKCharacteristicTypeIdentifier // HKWheelchairUseObject
+
+    @available(iOS 14.0, *)
+    public static let activityMoveMode: HKCharacteristicTypeIdentifier // HKActivityMoveModeObject
+}
+
+/*-----------------------------------*/
+/*   HKCorrelationType Identifiers   */
+/*-----------------------------------*/
+
+public struct HKCorrelationTypeIdentifier : Hashable, Equatable, RawRepresentable {
+
+    public init(rawValue: String)
+}
+extension HKCorrelationTypeIdentifier {
+
+    
+    @available(iOS 8.0, *)
+    public static let bloodPressure: HKCorrelationTypeIdentifier
+
+    @available(iOS 8.0, *)
+    public static let food: HKCorrelationTypeIdentifier
+}
+
+/*--------------------------------*/
+/*   HKDocumentType Identifiers   */
+/*--------------------------------*/
+
+public struct HKDocumentTypeIdentifier : Hashable, Equatable, RawRepresentable {
+
+    public init(rawValue: String)
+}
+extension HKDocumentTypeIdentifier {
+
+    
+    @available(iOS 10.0, *)
+    public static let CDA: HKDocumentTypeIdentifier
+}
+
+/*------------------------------*/
+/*   HKWorkoutType Identifier   */
+/*------------------------------*/
+
+@available(iOS 8.0, *)
+public let HKWorkoutTypeIdentifier: String
+
+/*--------------------------------*/
+/*   HKSeriesSample Identifiers   */
+/*--------------------------------*/
+
+@available(iOS 11.0, *)
+public let HKWorkoutRouteTypeIdentifier: String
+@available(iOS 13.0, *)
+public let HKDataTypeIdentifierHeartbeatSeries: String
