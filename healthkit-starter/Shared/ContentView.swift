@@ -51,8 +51,6 @@ struct ContentView: View {
     
     @EnvironmentObject var model: Model
     
-    @State var names: [String] = ["One", "Two"]
-    
     func getResults() {
         let query = HKSampleQuery(
             sampleType: .workoutType(),
@@ -95,11 +93,6 @@ struct ContentView: View {
                 ForEach(model.workouts, id: \.self) { workout in
                     Text("workout")
                     Text("\(workout.duration)")
-                }
-            }
-            List {
-                ForEach(self.names, id: \.self) { name in
-                    Text("\(name)")
                 }
             }
         }
