@@ -7,6 +7,7 @@
 
 import SwiftUI
 import HealthKit
+import Combine
 
 public class HealthKitManager {
     
@@ -31,13 +32,14 @@ public class HealthKitManager {
 
 class Model: ObservableObject {
     @Published var workouts: [HKWorkout]
+    private var cancellables = Set<AnyCancellable>()
     
     init(workouts: [HKWorkout]) {
         self.workouts = workouts
     }
     
     public func addWorkout(_ workout: HKWorkout) {
-        self.workouts.append(workout)
+        workouts.append(workout)
     }
 }
 
@@ -45,13 +47,19 @@ struct ContentView: View {
     
     @State var healthKitManager: HealthKitManager? = nil
     
-    @State var workouts: [HKWorkout] = [
-        
-    ]
-    
-    @EnvironmentObject var model: Model
+    @ObservedObject var model: Model = Model(workouts: [
+//        HKWorkout(
+//            activityType: .americanFootball,
+//            start: makeDate(year: 2021, month: 4, day: 26, hr: 12, min: 0, sec: 0),
+//            end: makeDate(year: 2021, month: 4, day: 26, hr: 13, min: 0, sec: 0)
+//        )
+    ])
+    @State private var objectLoaded = false
     
     func getResults() {
+        if objectLoaded {
+            return
+        }
         let query = HKSampleQuery(
             sampleType: .workoutType(),
             predicate: nil,
@@ -64,17 +72,16 @@ struct ContentView: View {
             }
             // get Workout Information
             for sample in samples {
-                self.workouts.append(sample)
-//                self.model.addWorkout(sample)
+                self.model.addWorkout(sample)
 //                model.addWorkout(sample)
             }
             
             DispatchQueue.main.sync {
                 // Update the UI here.
-                self.workouts = samples
                 let _ = samples.map { sample in
                     self.model.addWorkout(sample)
                 }
+                objectLoaded = true
             }
         }
         
@@ -83,7 +90,6 @@ struct ContentView: View {
     
     init(healthKitManager: HealthKitManager) {
         self.healthKitManager = healthKitManager
-        getResults()
     }
     
     var body: some View {
@@ -91,13 +97,13 @@ struct ContentView: View {
             Text("Top of the list")
             List {
                 ForEach(model.workouts, id: \.self) { workout in
-                    Text("workout")
-                    Text("\(workout.duration)")
+                    Text("Workout\nActivity Type: \(workout)")
                 }
             }
         }
         .onAppear {
             self.healthKitManager?.requestAuthorization()
+            getResults()
         }
     }
 }
@@ -123,7 +129,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(
             healthKitManager: HealthKitManager()
         )
-        .environmentObject(model)
+//        .environmentObject(model)
         .previewDevice(PreviewDevice(rawValue: "iPhone X"))
     }
 }
