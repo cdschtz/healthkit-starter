@@ -14,7 +14,6 @@ public class HealthKitManager {
     public static let healthStore = HKHealthStore()
     
     private let allTypes = Set([
-        //        HKObjectType.characteristicType(forIdentifier: .biologicalSex),
         HKObjectType.quantityType(forIdentifier: .stepCount)!,
         HKObjectType.workoutType()
     ])
@@ -47,13 +46,8 @@ struct ContentView: View {
     
     @State var healthKitManager: HealthKitManager? = nil
     
-    @ObservedObject var model: Model = Model(workouts: [
-//        HKWorkout(
-//            activityType: .americanFootball,
-//            start: makeDate(year: 2021, month: 4, day: 26, hr: 12, min: 0, sec: 0),
-//            end: makeDate(year: 2021, month: 4, day: 26, hr: 13, min: 0, sec: 0)
-//        )
-    ])
+    @ObservedObject var model: Model = Model(workouts: [])
+    
     @State private var objectLoaded = false
     
     func getResults() {
@@ -73,7 +67,6 @@ struct ContentView: View {
             // get Workout Information
             for sample in samples {
                 self.model.addWorkout(sample)
-//                model.addWorkout(sample)
             }
             
             DispatchQueue.main.sync {
@@ -110,7 +103,6 @@ struct ContentView: View {
 
 func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> Date {
     let calendar = Calendar(identifier: .gregorian)
-    // calendar.timeZone = TimeZone(secondsFromGMT: 0)!
     let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
     return calendar.date(from: components)!
 }
@@ -129,7 +121,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(
             healthKitManager: HealthKitManager()
         )
-//        .environmentObject(model)
         .previewDevice(PreviewDevice(rawValue: "iPhone X"))
     }
 }
