@@ -9,10 +9,10 @@ import SwiftUI
 import HealthKit
 
 @main
-struct healthkit_starterApp: App {
-    var healthKitManager: HealthKitManager = HealthKitManager()
+struct HealthKitStarterApp: App {
+    var healthKitManager = HealthKitManager()
     
-    @StateObject private var model: Model = Model(workouts: [])
+    @StateObject private var model = Model(workouts: [])
     
     var body: some Scene {
         WindowGroup {

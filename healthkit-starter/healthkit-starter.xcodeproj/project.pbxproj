@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83FF3FA826332CEE0050E603 /* healthkit_starterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF3F9526332CED0050E603 /* healthkit_starterApp.swift */; };
+		83FF3FA826332CEE0050E603 /* HealthKitStarterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF3F9526332CED0050E603 /* HealthKitStarterApp.swift */; };
 		83FF3FAA26332CEE0050E603 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF3F9626332CED0050E603 /* ContentView.swift */; };
 		83FF3FAC26332CEE0050E603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FF3F9726332CEE0050E603 /* Assets.xcassets */; };
 		83FF3FBE263330410050E603 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FF3FBD263330410050E603 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		83FF3F9526332CED0050E603 /* healthkit_starterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthkit_starterApp.swift; sourceTree = "<group>"; };
+		83FF3F9526332CED0050E603 /* HealthKitStarterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStarterApp.swift; sourceTree = "<group>"; };
 		83FF3F9626332CED0050E603 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		83FF3F9726332CEE0050E603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83FF3F9C26332CEE0050E603 /* healthkit-starter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "healthkit-starter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,25 +35,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8341F46726396B0700170E10 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				83FF3F9F26332CEE0050E603 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		83FF3F8F26332CED0050E603 = {
 			isa = PBXGroup;
 			children = (
+				8341F46726396B0700170E10 /* iOS */,
 				83FF3FBB263330410050E603 /* healthkit-starter.entitlements */,
-				83FF3F9426332CED0050E603 /* Shared */,
-				83FF3F9E26332CEE0050E603 /* iOS */,
+				83FF3F9426332CED0050E603 /* HealthKitStarterApp */,
 				83FF3F9D26332CEE0050E603 /* Products */,
 				83FF3FBC263330410050E603 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		83FF3F9426332CED0050E603 /* Shared */ = {
+		83FF3F9426332CED0050E603 /* HealthKitStarterApp */ = {
 			isa = PBXGroup;
 			children = (
-				83FF3F9526332CED0050E603 /* healthkit_starterApp.swift */,
+				83FF3F9526332CED0050E603 /* HealthKitStarterApp.swift */,
 				83FF3F9626332CED0050E603 /* ContentView.swift */,
 				83FF3F9726332CEE0050E603 /* Assets.xcassets */,
 			);
-			path = Shared;
+			path = HealthKitStarterApp;
 			sourceTree = "<group>";
 		};
 		83FF3F9D26332CEE0050E603 /* Products */ = {
@@ -62,14 +70,6 @@
 				83FF3F9C26332CEE0050E603 /* healthkit-starter.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		83FF3F9E26332CEE0050E603 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				83FF3F9F26332CEE0050E603 /* Info.plist */,
-			);
-			path = iOS;
 			sourceTree = "<group>";
 		};
 		83FF3FBC263330410050E603 /* Frameworks */ = {
@@ -87,6 +87,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83FF3FB026332CEE0050E603 /* Build configuration list for PBXNativeTarget "healthkit-starter (iOS)" */;
 			buildPhases = (
+				83A7E98026395E8900027AEF /* SwiftLint */,
 				83FF3F9826332CEE0050E603 /* Sources */,
 				83FF3F9926332CEE0050E603 /* Frameworks */,
 				83FF3F9A26332CEE0050E603 /* Resources */,
@@ -143,13 +144,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		83A7E98026395E8900027AEF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\nexport PATH\nif which swiftlint >/dev/null; then\n swiftlint\nelse\n echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		83FF3F9826332CEE0050E603 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				83FF3FAA26332CEE0050E603 /* ContentView.swift in Sources */,
-				83FF3FA826332CEE0050E603 /* healthkit_starterApp.swift in Sources */,
+				83FF3FA826332CEE0050E603 /* HealthKitStarterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

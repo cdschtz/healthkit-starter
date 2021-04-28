@@ -9,14 +9,20 @@ import SwiftUI
 import HealthKit
 import Combine
 
+/// manages access to healthkit
 public class HealthKitManager {
-    
+    /// healthstore
     public static let healthStore = HKHealthStore()
     
-    private let allTypes = Set([
-        HKObjectType.quantityType(forIdentifier: .stepCount)!,
-        HKObjectType.workoutType()
-    ])
+    private var allTypes: Set<HKObjectType> {
+            guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+                return Set()
+            }
+            return Set([
+                stepCountType,
+                HKObjectType.workoutType()
+            ])
+    }
     
     func requestAuthorization() {
         if HKHealthStore.isHealthDataAvailable() {
@@ -37,7 +43,7 @@ class Model: ObservableObject {
         self.workouts = workouts
     }
     
-    public func addWorkout(_ workout: HKWorkout) {
+    func addWorkout(_ workout: HKWorkout) {
         workouts.append(workout)
     }
 }
@@ -46,7 +52,7 @@ struct ContentView: View {
     // State vs Observed Object vs EnvironmentObject:
     // https://www.hackingwithswift.com/quick-start/swiftui/whats-the-difference-between-observedobject-state-and-environmentobject#:~:text=The%20rule%20is%20this%3A%20whichever,don't%20own%20it%20directly.
     
-    @State private var healthKitManager: HealthKitManager? = nil
+    @State private var healthKitManager: HealthKitManager?
     
     // For more complex properties - when you have a custom type you want to
     // use that might have multiple properties and methods, or might be shared
@@ -57,7 +63,7 @@ struct ContentView: View {
     //
     // There are several ways for an observed object to notify views that important
     // data has changed, but the easiest is using the @Published property wrapper.
-    @ObservedObject var model: Model = Model(workouts: [])
+    @ObservedObject var model = Model(workouts: [])
     
     // State is great for simple properties that belong to a specific view and
     // never get used outside that view, so as a result it's important to mark those
@@ -75,8 +81,7 @@ struct ContentView: View {
             sampleType: .workoutType(),
             predicate: nil,
             limit: 5,
-            sortDescriptors: nil) { (_, result, error) in
-            
+            sortDescriptors: nil) { _, result, error in
             guard let samples = result as? [HKWorkout], error == nil else {
                 print("HealthService error \(String(describing: error))")
                 return
@@ -84,7 +89,7 @@ struct ContentView: View {
             
             DispatchQueue.main.sync {
                 // Update the UI here.
-                let _ = samples.map { sample in
+                _ = samples.map { sample in
                     self.model.addWorkout(sample)
                 }
                 objectLoaded = true
@@ -114,12 +119,6 @@ struct ContentView: View {
     }
 }
 
-func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> Date {
-    let calendar = Calendar(identifier: .gregorian)
-    let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
-    return calendar.date(from: components)!
-}
-
 struct ContentView_Previews: PreviewProvider {
     // StateObject is a specialized version of ObservedObject and it works in almost
     // exactly the same way.
@@ -128,7 +127,7 @@ struct ContentView_Previews: PreviewProvider {
     // use StateObject, to tell SwiftUI it is the owner of the data and is responsible for keeping it alive.
     // All other view must use @ObservedObject, to tell SwiftUI they want to watch the object for changes
     // but don't own it directly.
-    @StateObject private static var model: Model = Model(workouts: [])
+    @StateObject private static var model = Model(workouts: [])
     
     static var previews: some View {
         ContentView(
