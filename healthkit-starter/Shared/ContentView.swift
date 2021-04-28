@@ -81,10 +81,6 @@ struct ContentView: View {
                 print("HealthService error \(String(describing: error))")
                 return
             }
-            // get Workout Information
-            for sample in samples {
-                self.model.addWorkout(sample)
-            }
             
             DispatchQueue.main.sync {
                 // Update the UI here.
