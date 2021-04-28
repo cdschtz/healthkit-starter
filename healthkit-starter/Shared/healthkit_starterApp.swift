@@ -12,14 +12,7 @@ import HealthKit
 struct healthkit_starterApp: App {
     var healthKitManager: HealthKitManager = HealthKitManager()
     
-    @StateObject private var model: Model = Model(
-        workouts: [
-            HKWorkout(
-                activityType: .americanFootball,
-                start: makeDate(year: 2021, month: 4, day: 26, hr: 12, min: 0, sec: 0),
-                end: makeDate(year: 2021, month: 4, day: 26, hr: 13, min: 0, sec: 0)
-            )
-        ])
+    @StateObject private var model: Model = Model(workouts: [])
     
     var body: some Scene {
         WindowGroup {
