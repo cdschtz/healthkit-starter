@@ -10,12 +10,6 @@ import HealthKit
 
 /// provides download functionality for workouts
 public class WorkoutService {
-    var workoutLoaded: Bool
-    
-    init() {
-        self.workoutLoaded = false
-    }
-    
     func printModelResults(_ model: Model) {
         var jsonString = ""
         let workout = model.workouts[0]
@@ -26,26 +20,38 @@ public class WorkoutService {
         jsonString.append("\"activityType\": \"Running Workout\",\n")
         jsonString.append("\"startDate\": \"\(workout.startDate)\",\n")
         jsonString.append("\"endDate\": \"\(workout.endDate)\",\n")
-        jsonString.append("\"duration\": \"\(workout.duration)\",\n")
-        // TODO: Start | save as object together with unit
-        jsonString.append("\"totalDistance\": \"\(String(describing: workout.totalDistance))\",\n")
-        jsonString.append("\"totalCalories\": \"\(String(describing: workout.totalEnergyBurned))\",\n")
-        // TODO: End
+        
+        jsonString.append("\"duration\": {\"doubleValue\": \(workout.duration), \"unit\": \"s\"},\n")
+        
+        let totalDistanceUnit = "m"
+        guard let totalDistance = workout.totalDistance?.doubleValue(for: .init(from: totalDistanceUnit)) else {
+            return
+        }
+        jsonString.append("\"totalDistance\": {\"doubleValue\": \(totalDistance), \"unit\": \"\(totalDistanceUnit)\"},\n")
+        
+        let totalCaloriesUnit = "kcal"
+        guard let totalCalories = workout.totalEnergyBurned?.doubleValue(for: .init(from: totalCaloriesUnit)) else {
+            return
+        }
+        jsonString.append("\"totalCalories\": {\"doubleValue\": \(totalCalories), \"unit\": \"\(totalCaloriesUnit)\"},\n")
+        
+        // Future Task: End
         jsonString.append("\"sourceRevision\": \"\(workout.sourceRevision)\",\n")
         
         // heartRateSamples
         jsonString.append("\"heartRateSamples\": [\n")
         for hrSample in model.heartRateSamples {
-            // TODO: Include all heartRate info: currently missing
-            jsonString.append("{\"startTime\": \"\(hrSample.startDate)\", \"quantity\": \"\(hrSample.quantity)\"},\n")
+            let hrQuantityUnit = "count/min"
+            let hrQuantityValue = hrSample.quantity.doubleValue(for: .init(from: hrQuantityUnit))
+            jsonString.append("{\"startTime\": \"\(hrSample.startDate)\", \"endTime\": \"\(hrSample.endDate)\", \"quantity\": {\"doubleValue\": \(hrQuantityValue), \"unit\": \"\(hrQuantityUnit)\"}, \"count\": \(hrSample.count), \"device\": \"\(hrSample.device.debugDescription)\"},\n")
         }
         jsonString.append("],\n")
         
         // locations
-        // TODO: Watch out if multiple routes exist for one workout
+        // Future Task: Watch out if multiple routes exist for one workout
         jsonString.append("\"locations\": [\n")
         for location in model.locations {
-            jsonString.append("{\"Altitude\": \(location.altitude), \"Latitude\": \(location.coordinate.latitude), \"Longitude\": \(location.coordinate.longitude), \"Speed in m/s\": \(location.speed), \"speedAccuracy\": \(location.speedAccuracy), \"Timestamp\": \"\(location.timestamp)\"},\n")
+            jsonString.append("{\"altitude\": \(location.altitude), \"latitude\": \(location.coordinate.latitude), \"longitude\": \(location.coordinate.longitude), \"speed\": {\"doubleValue\": \(location.speed), \"unit\": \"m/s\"}, \"speedAccuracy\": \(location.speedAccuracy), \"timestamp\": \"\(location.timestamp)\"},\n")
         }
         jsonString.append("],\n")
         
