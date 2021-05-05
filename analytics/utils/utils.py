@@ -8,7 +8,7 @@ def process_workout(path: Path):
     with open(path) as workout_data_file:
         json_entry = json.load(workout_data_file)
         assert "data" in json_entry
-        data: Workout = json_entry["data"]
+        data = json_entry["data"]
         return data
 
 
